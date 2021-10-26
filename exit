@@ -1,0 +1,45 @@
+[1mdiff --git a/head.js b/head.js[m
+[1mindex 71098ab..06b4d1d 100644[m
+[1m--- a/head.js[m
+[1m+++ b/head.js[m
+[36m@@ -1,20 +1,20 @@[m
+[31m-const assertEqual = function(actual, expected) {[m
+[31m-  if (actual !== expected) {[m
+[31m-    console.log(`🛑🛑🛑Assertion Failed: ${actual} !== ${expected}`);[m
+[31m-  } else if (actual === expected) {[m
+[31m-    console.log(`✅✅✅Assertion Passed: ${actual} === ${expected}`);[m
+[31m-  }[m
+[31m-};[m
+[31m-[m
+[31m-const head = function (array) {[m
+[31m-  let head = "";[m
+[31m-  if (array.length === 0) {[m
+[31m-    head = "undefined";[m
+[31m-  } else if (array.length !== 0) {[m
+[31m-    head = array[0];[m
+[31m-  }[m
+[31m-  return head;[m
+[31m-}[m
+[31m-[m
+[31m-assertEqual(head([5,6,7]), 5);[m
+[32m+[m[32mconst assertEqual = function(actual, expected) {[m
+[32m+[m[32m  if (actual !== expected) {[m
+[32m+[m[32m    console.log(`🛑🛑🛑Assertion Failed: ${actual} !== ${expected}`);[m
+[32m+[m[32m  } else if (actual === expected) {[m
+[32m+[m[32m    console.log(`✅✅✅Assertion Passed: ${actual} === ${expected}`);[m
+[32m+[m[32m  }[m
+[32m+[m[32m};[m
+[32m+[m
+[32m+[m[32mconst head = function(array) {[m
+[32m+[m[32m  let head = "";[m
+[32m+[m[32m  if (array.length === 0) {[m
+[32m+[m[32m    head = "undefined";[m
+[32m+[m[32m  } else if (array.length !== 0) {[m
+[32m+[m[32m    head = array[0];[m
+[32m+[m[32m  }[m
+[32m+[m[32m  return head;[m
+[32m+[m[32m};[m
+[32m+[m
+[32m+[m[32massertEqual(head([5,6,7]), 5);[m
+ assertEqual(head(["Hello", "Lighthouse", "Labs"]), "Hello");[m
+\ No newline at end of file[m
