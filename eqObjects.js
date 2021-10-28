@@ -33,7 +33,7 @@ const eqObjects = function(object1, object2) {
     let count = 0;
     for (let i of a) {
       for (let j of b) {
-        if (i === j && Array.isArray(object1[i]) && Array.isArray(object1[i])) {
+        if (i === j && Array.isArray(object1[i]) && Array.isArray(object2[j])) {
           eqArrays(object1[i], object2[i]) === true ? count += 1 : count;
         } else if (i === j && object1[i] === object2[j] && !Array.isArray(object1[i])) {
           count += 1;
