@@ -35,6 +35,10 @@ const eqObjects = function(object1, object2) {
       for (let j of b) {
         if (i === j && Array.isArray(object1[i]) && Array.isArray(object2[j])) {
           eqArrays(object1[i], object2[i]) === true ? count += 1 : count;
+        }  else if (i === j && !Array.isArray(object1[i]) && !Array.isArray(object2[j]) && typeof object1[i] === "object" && typeof object2[j] === "object") {
+          if (eqObjects(object1[i], object2[j])) {
+            count += 1;
+          }
         } else if (i === j && object1[i] === object2[j] && !Array.isArray(object1[i])) {
           count += 1;
         }
@@ -60,3 +64,10 @@ assertEqual(eqObjects(cd, dc), true); // => true
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
 assertEqual(eqObjects(cd, cd2), false); // => false
+
+console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+// recursive test cases
+assertEqual(eqObjects({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true); // => true
+
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false); // => false
+assertEqual(eqObjects({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false); // => false
