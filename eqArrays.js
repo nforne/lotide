@@ -7,18 +7,21 @@ const assertEqual = function(actual, expected) {
 };
 
 const eqArrays = function(array1, array2) {
-  let outPut = "";
+  let outPut = true;
   if (array1.length === array2.length) {
     for (let i = 0; i < array1.length; i++) {
-      if (array1[i] !== array2[i]) {
+      if (Array.isArray(array1[i]) && Array.isArray(array2[i])) {        
+        if (!eqArrays(array1[i], array2[i])) {
+          outPut = false;
+          break;
+        } 
+      } else if (array1[i] !== array2[i]) {
         outPut = false;
         break;
-      } else {
-        outPut = true;
-      }
-    }
+      } 
+    } 
   } else {
-    outPut = false;
+    outPut = false; 
   }
   return outPut;
 };
@@ -37,21 +40,14 @@ let d = eqArrays(["1", "2", "3"], ["1", "2", 3]); // => false
 assertEqual(c, true);
 assertEqual(d, false);
 
-/*
-const eqArrays = function(array1, array2) {
-  let outPut = "";
-  if (array1.length === array2.length) {
-    for (let i = 0; i < array1.length; i++) {
-      if (!(array1.includes(array2[i]))) {
-        outPut = false;
-        break;
-      } else {
-        outPut = true;
-      }
-    }
-  } else {
-    outPut = false;
-  }
-  return outPut;
-}
-*/
+console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+// recursive test cases
+let e = eqArrays([[2, 3], [4, [5, [6]]]], [[2, 3], [4, [5, [6]]]]); // => true
+let f = eqArrays([[2, 3], [4]], [[2, 3], [4, 5]]); // => false
+let g = eqArrays([[2, 3], [4]], [[2, 3], 4]); // => false
+assertEqual(e, true);
+console.log("---------------------------------------------");
+assertEqual(f, false);
+console.log("---------------------------------------------");
+assertEqual(g, false);
+console.log("---------------------------------------------");
