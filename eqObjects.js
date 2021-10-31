@@ -7,14 +7,17 @@ const assertEqual = function(actual, expected) {
 };
 
 const eqArrays = function(array1, array2) {
-  let outPut = "";
+  let outPut = true;
   if (array1.length === array2.length) {
     for (let i = 0; i < array1.length; i++) {
-      if (array1[i] !== array2[i]) {
+      if (Array.isArray(array1[i]) && Array.isArray(array2[i])) {
+        if (!eqArrays(array1[i], array2[i])) {
+          outPut = false;
+          break;
+        }
+      } else if (array1[i] !== array2[i]) {
         outPut = false;
         break;
-      } else {
-        outPut = true;
       }
     }
   } else {
@@ -58,8 +61,8 @@ assertEqual(eqObjects(ab, abc), false); // => false
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-const cd = { c: "1", d: ["2", 3] };
-const dc = { d: ["2", 3], c: "1" };
+const cd = { c: [[2, 3], [4, [5, [6]]]], d: ["2", 3] };
+const dc = { d: ["2", 3], c: [[2, 3], [4, [5, [6]]]] };
 assertEqual(eqObjects(cd, dc), true); // => true
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
