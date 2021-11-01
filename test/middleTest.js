@@ -1,5 +1,5 @@
 const middle = require("../middle");
-const assertArraysEquals = require("../assertArraysEqual");
+// const assertArraysEquals = require("../assertArraysEqual");
 // const eqArrays = require("../eqArrays")
 
 let test = {examples : [
@@ -15,11 +15,28 @@ let test = {examples : [
 
 let a = test["examples"];
 let b = test["xpresults"];
+// for (let i of a) {
+//   for (let j of b) {
+//     if (a.indexOf(i) === b.indexOf(j)) {
+//       assertArraysEquals(i, j)
+//       // console.log(eqArrays(i, j));
+//     }
+//   }
+// }
+
+const assert = require('chai').assert;
+
+
 for (let i of a) {
   for (let j of b) {
     if (a.indexOf(i) === b.indexOf(j)) {
-      assertArraysEquals(i, j)
-      // console.log(eqArrays(i, j));
+      // assertArraysEquals(i, j);
+      describe("#middle", () => {
+        it(`return true for ${i} and ${j}`, () => {
+          assert.deepEqual(i,j);
+        })
+      })
+      
     }
   }
-}
+};
