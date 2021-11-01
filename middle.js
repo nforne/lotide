@@ -11,7 +11,7 @@ const eqArrays = function(array1, array2) {
     }
   } else if (array1.length === array2.length && array1.length === 0) {
     outPut = true;
-  }else {
+  } else {
     outPut = false;
   }
   return outPut;
@@ -38,27 +38,27 @@ const middle = function(array) {
   let outPut = [];
   if (array.length > 2) {
     if (array.length % 2 === 0) {
-      outPut.push(array[(array.length/2) - 1]);
-      outPut.push(array[(array.length/2)]);
+      outPut.push(array[(array.length / 2) - 1]);
+      outPut.push(array[(array.length / 2)]);
     } else if (array.length % 2 !== 0) {
-      outPut.push(array[Math.floor(array.length/2)]);
+      outPut.push(array[Math.floor(array.length / 2)]);
     }
   } // else if (array.length <= 2) {}
   return outPut;
-}
+};
 let test = {examples : [
 
-middle([1]), // => []
-middle([1, 2]), // => []
-middle([1, 2, 3]), // => [2]
-middle([1, 2, 3, 4, 5]), // => [3]
-middle([1, 2, 3, 4]), // => [2, 3]
-middle([1, 2, 3, 4, 5, 6]) // => [3, 4]
+  middle([1]), // => []
+  middle([1, 2]), // => []
+  middle([1, 2, 3]), // => [2]
+  middle([1, 2, 3, 4, 5]), // => [3]
+  middle([1, 2, 3, 4]), // => [2, 3]
+  middle([1, 2, 3, 4, 5, 6]) // => [3, 4]
 
-], xpresults : [[], [], [2], [3], [2, 3], [3, 4]] }
+], xpresults : [[], [], [2], [3], [2, 3], [3, 4]] };
 
 let a = test["examples"];
-let b = test["xpresults"]
+let b = test["xpresults"];
 for (let i of a) {
   console.log(i);
   for (let j of b) {
@@ -69,4 +69,4 @@ for (let i of a) {
       }
     }
   }
-};
+}
