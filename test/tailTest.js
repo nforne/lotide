@@ -1,13 +1,12 @@
-const tail = require("../tail");
+const a = require("../index")
 
-const assertEqual = require("../assertEqual");
-const result = tail(["Hello", "Lighthouse", "Labs"]);
+const result = a.tail(["Hello", "Lighthouse", "Labs"]);
 
-// assertEqual(result.length, 2); // ensure we get back two elements
-// assertEqual(result[0], "Lighthouse"); // ensure first element is "Lighthouse"
-// assertEqual(result[1], "Labs"); // ensure second element is "Labs"
+a.assertEqual(result.length, 2); // ensure we get back two elements
+a.assertEqual(result[0], "Lighthouse"); // ensure first element is "Lighthouse"
+a.assertEqual(result[1], "Labs"); // ensure second element is "Labs"
 
-
+/*
 const assert = require('chai').assert;
 
 describe("#tail", () => {
@@ -23,3 +22,5 @@ describe("#tail", () => {
     assert.strictEqual(result[1], "Labs");
   });
 });
+
+*/
