@@ -1,6 +1,6 @@
 
 const findKey = function(object, callback) {
-  let result = "undefined";
+  let result;
   let rsts = [];
   let keys = Object.keys(object);
   for (let i of keys) {
